@@ -41,6 +41,7 @@ public class primos {
 		else {
 			boolean [] multi = new boolean [maior+1];
 			Arrays.fill(multi, true);
+			
 			///define que números devem ser multiplicados dentre os números no alcance para serem checados
 			alcance = Math.ceil(Math.sqrt(maior))+ 1;
 			
