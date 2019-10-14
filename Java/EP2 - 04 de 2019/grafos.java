@@ -1,4 +1,4 @@
-package test;
+//package test;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,9 @@ public class grafos {
 		for(int [] row: matriz) {
 			Arrays.fill(row, 0);
 		}	
+		
 		String [] arestas = entrada.nextLine().split("\\|");
+		
 		//onde checar quem segue quem
 		String [][] conexoes = new String [(arestas.length)/2][2];
 		int listIndex = 0;
@@ -24,13 +26,15 @@ public class grafos {
 		int somaLinhaMenor = nomes.length;
 		int somaColunaMaior = 0;
 		int somaColunaMenor = nomes.length;
+		
 		//listas a serem impressas
 		List<String> maisSeguidos = new ArrayList<String>();
 		List<String> menosSeguidos = new ArrayList<String>();
 		List<String> maisSeguem = new ArrayList<String>();
 		List<String> menosSeguem = new ArrayList<String>();
 		List<String> mutuos = new ArrayList<String>();
-	    //loop through each row
+	    
+		//loop through each row
 	    for (int row=0; row<conexoes.length; row++)
 	    {
 	        //loop through each column
@@ -40,8 +44,9 @@ public class grafos {
 	            conexoes[row][col] = arestas[listIndex++];
 	        }
 	    }
-	    //se o indice de nomes[] define as linhas e colunas da matriz e
-	    //se conexoes[i][0] é a pessoa seguindo e conexoes[i][1] é a pessoa sendo seguida
+	    
+		//se o indice de nomes[] define as linhas e colunas da matriz e
+	    //se conexoes[i][0] Ã© a pessoa seguindo e conexoes[i][1] Ã© a pessoa sendo seguida
 	    //logo nomes[col] == conexoes [i][0] e nomes[lin] == conexoes[i][1]
 	    for(int col = 0; col<nomes.length; col++) {
 	    	for(int i = 0; i<conexoes.length; i++) {
@@ -49,13 +54,14 @@ public class grafos {
 	    			for(int lin = 0; lin<nomes.length;lin++) {
 	    				if(nomes[lin].contentEquals(conexoes[i][1])) {
 	    					matriz[col][lin] = 1;
-	    					//oops inverti mas ainda dá certo	    					
+	    					//oops inverti mas ainda dÃ¡ certo	    					
 	    				}
 	    			}	    			
 	    		}
 	    	}	    	
 	    }
-	    //para descobrir quem é o que segue mais e quem segue menos:
+	    
+		//para descobrir quem Ã© o que segue mais e quem segue menos:
 	    for (int i = 0; i < matriz.length; ++i){ 
 	    	int sum = 0;
 	        for (int j = 0; j < matriz.length; ++j){
@@ -64,14 +70,16 @@ public class grafos {
 	        } 
 	        if(sum>somaLinhaMaior){
             	somaLinhaMaior = sum;
-	        }	
+	        }
+		    
             if(sum<somaLinhaMenor) {
             	somaLinhaMenor = sum;
             }  
 	        // Reinicie a soma
 	        sum = 0; 
 	    }
-	 // para descobrir quem é o mais seguido e quem é o menos seguido:
+		
+	 // para descobrir quem Ã© o mais seguido e quem Ã© o menos seguido:
 	    for (int col = 0; col < matriz.length; col++) {
 	        int colSum = 0;
 	        for (int row = 0; row < matriz.length; row++) {
@@ -80,9 +88,11 @@ public class grafos {
 	        if(colSum>somaColunaMaior){
             	somaColunaMaior = colSum;
 	        }	
+		    
             if(colSum<somaColunaMenor) {
             	somaColunaMenor = colSum;
             }
+		    
          // Reinicie a soma
             colSum = 0;
 	    }
@@ -177,12 +187,12 @@ public class grafos {
 	}
 	public static void Mutualidade(List<String> mutuos, int[][]matriz, String []nomes) {
 		for (int i = 0; i < matriz.length - 1; ++i){ 
-	    	for (int j = i; j < matriz.length; ++j){
-	    		if(matriz[i][j] == 1 && matriz[j][i] == 1) {
-	    			mutuos.add(nomes[i]);
-	    			mutuos.add(nomes[j]);
-	    		}
-	    	}
+			for (int j = i; j < matriz.length; ++j){
+				if(matriz[i][j] == 1 && matriz[j][i] == 1) {
+					mutuos.add(nomes[i]);
+					mutuos.add(nomes[j]);
+				}
+			}
 		}		
 	}
 }		
