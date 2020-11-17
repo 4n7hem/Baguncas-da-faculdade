@@ -1,0 +1,17 @@
+
+
+1 - Extraia os arquivos do .zip para um diretório de escolha;
+
+2 - Abra o terminal de comandos;
+
+3 - Para windows e Linux, faça: >cd (endereço para onde você extraiu os arquivos)\src;
+
+4 - Execute: >java Pong FxBall
+
+P.S.: Por causa de problemas envolvendo o meu computador e classpaths, eu tive que executar
+ no meu computador isso como:
+
+ 	>java -cp . Pong FxBall
+
+
+5 - Quando terminar, apenas feche a janela. (Nenhum progresso será salvo.)
